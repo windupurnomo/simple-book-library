@@ -3,6 +3,8 @@ package id.etanee.training.simplebooklibrary.service;
 import id.etanee.training.simplebooklibrary.entity.Book;
 import id.etanee.training.simplebooklibrary.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,8 +34,8 @@ public class BookService {
         return bookRepository.save(db);
     }
 
-    public List<Book> getAll(){
-        return bookRepository.findAll();
+    public Page<Book> getAll(Pageable pageable){
+        return bookRepository.findAll(pageable);
     }
 
     public Book getById(String id){

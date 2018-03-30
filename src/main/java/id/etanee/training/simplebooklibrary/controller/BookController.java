@@ -3,6 +3,8 @@ package id.etanee.training.simplebooklibrary.controller;
 import id.etanee.training.simplebooklibrary.entity.Book;
 import id.etanee.training.simplebooklibrary.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,8 +27,8 @@ public class BookController {
     }
 
     @GetMapping
-    public List<Book> getAll(){
-        return bookService.getAll();
+    public Page<Book> getAll(Pageable pageable){
+        return bookService.getAll(pageable);
     }
 
     @GetMapping("/{id}")
